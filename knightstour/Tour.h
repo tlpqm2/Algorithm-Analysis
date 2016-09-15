@@ -2,9 +2,8 @@
 //Instructor: Dr. Das
 //Course: Analysis of Algorithms
 //Assignment: Given a starting square construct a closed Knight's Tour on an NxN chess Tour
-//Description: This program implements Warnsdorf's Rule as a heuristic to choose a next square,
-//             then attempts to complete a tour, if it fails the program backtracks to find 
-//             a correct sequence.
+//Description: Header and implementation details for Tour.h, containing structures and functions
+//             necessary to solve a closed Knight's Tour.
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -166,7 +165,7 @@ void Tour::tour(const std::string start)
       }
     }
     search = 0;
-    //Pick a move
+    //Try to find a tracked move
     while(search < 8)
     {
       if(m_tracker[move][search] > 0)
@@ -180,16 +179,19 @@ void Tour::tour(const std::string start)
       }
       search++;
     }
-    //Move if we found a move
+    //Backtrack
     if(search == 8)
     {
       //Backtracking if we exhausted the tracker for the given move
       m_data[y][x] = -1;
       x = m_tracker[move - 1][9];
       y = m_tracker[move - 1][10];
+      m_tracker[move][8] = -1;
       m_tracker[move][9] = -1;
       m_tracker[move][10] = -1;
       search = 0;
+
+      //Clear the move taken at the previous move
       while(search < 8)
       {
         if(m_tracker[move - 1][search] > 0)
@@ -199,11 +201,9 @@ void Tour::tour(const std::string start)
         }
         search++;
       }
-      m_tracker[move][8] = -1;
       move--;
-
-      continue;
     } 
+    //Move
     else
     {
       //Move the knight!

@@ -2,12 +2,15 @@
 //Instructor: Dr. Das
 //Course: Analysis of Algorithms
 //Assignment: Given a starting square construct a closed Knight's Tour on an NxN chess board
-//Description: This program implements Warnsdorf's Rule as a heuristic to choose a next square,
-//             then attempts to complete a tour, if it fails the program backtracks to find 
-//             a correct sequence.
+//Description: This is the driver for Tour.h. Create a Tour with size N = 2k to solve for a closed Knight's
+//             Tour on an NxN chess board.
+//Implementation: INCOMPLETE: Warnsdorf's Rule is used to choose the next move with the least next moves.
+//                After Warsndorf's the moves are then chosen based on the order in the Tracking array.
+//                Backtracking allows for failed paths to be reevaluated
+//                INCOMPLETE: Checks for a structured Knight's Tour
+//                INCOMPLETE: Uses Divide and Conquer for large N
 
 #include "Tour.h"
-
 
 int main()
 {
